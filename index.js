@@ -28,4 +28,12 @@ app.post('/komik', async (req, res) => {
     }
 });
 
+app.get('/komik', async (req, res) => {
+    try {
+        const komiks = await db.Komik.findAll();
+        res.status(200).json(komiks);
+    }   catch (error) { 
+        res.status(500).json({ error: 'Gagal mengambil data komik' });
+    }
+});
 
