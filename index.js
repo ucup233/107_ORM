@@ -10,7 +10,7 @@ app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
   
   db.sequelize.sync().then((result) => {
-    app.listen( 3000,() => {
+    app.listen( 5200,() => {
         console.log(`Server is running on http://localhost:${port}`);
     });
   }).catch((err) => {
