@@ -37,3 +37,21 @@ app.get('/komik', async (req, res) => {
     }
 });
 
+app.put('/komik/:id', async (req, res) => {
+    const komikId = req.params.id;
+    const data = req.body;
+    try {
+        const komik = await db.Komik.findByPk(komikId);
+        if (!komik) {
+            return res.status(404).json({ error: 'Komik tidak ditemukan' });
+        }
+        await komik.update(data);
+        res.status(200).json(komik);
+    }   
+    catch (error) { 
+        res.status(500).json({ error: 'Gagal memperbarui data komik' });
+    }
+}); 
+
+
+
