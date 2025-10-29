@@ -18,3 +18,14 @@ app.listen(port, () => {
   });
 });
 
+app.post('/komik', async (req, res) => {
+    const data = req.body;
+    try {
+        const komik = await db.Komik.create(data);
+        res.status(201).json(komik);
+    }   catch (error) { 
+        res.status(500).json({ error: 'Gagal menambahkan komik' });
+    }
+});
+
+
